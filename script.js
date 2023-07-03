@@ -1,14 +1,33 @@
-for (let i = 0; i < 16; i++){
-    let container = document.querySelector(".container");
-    let row = document.createElement("div");
-    row.classList.add("row");
+const container = document.querySelector(".container");
+const button = document.querySelector("button");
 
-    for (let j = 0; j < 16; j++){
-        let divSquare = document.createElement("div");
-        divSquare.classList.add("cell");
-        row.appendChild(divSquare);
+function createGrid(size){
+    for (let i = 0; i < size; i++){
+        let container = document.querySelector(".container");
+        let row = document.createElement("div");
+        row.classList.add("row");
+    
+        for (let j = 0; j < size; j++){
+            let divSquare = document.createElement("div");
+            divSquare.classList.add("cell");
+            row.appendChild(divSquare);
+        }
+        container.appendChild(row);
     }
-    container.appendChild(row);
+
+    hoverEventListener();
+}
+
+
+function gridSelect(){
+    let gridNum = prompt("Enter number of grids");
+
+    
+    while (container.lastChild !== button){
+        container.removeChild(container.lastChild);
+    }
+
+    createGrid(gridNum);
 }
 
 function hoverEventListener(){
@@ -21,4 +40,5 @@ function hoverEventListener(){
     })
 }
 
+createGrid(10);
 hoverEventListener();

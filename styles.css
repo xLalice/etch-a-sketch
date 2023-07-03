@@ -16,9 +16,11 @@
     height: 16%;
 }
 .cell {
-    min-width: 6.25%;
-    min-height: 6.25%;
+    width: 100%;
     border: .5px solid black;
 }
 
-
+button {
+    display: inline-block;
+    margin: auto 0;
+}
