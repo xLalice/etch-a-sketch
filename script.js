@@ -66,13 +66,11 @@ function hoverEventListener(){
 }
 
 function colorPick(){
-    // Get the color picker input element
+    currentMode = "color";
     var colorPicker = document.getElementById('colorPicker');
 
-    // Add event listener to the color picker
     colorPicker.addEventListener('input', event => {
-    // Get the selected color
-    selectedColor = event.target.value;
+        selectedColor = event.target.value;
     });
 }
 
@@ -85,29 +83,39 @@ function rainbowMode(){
     selectedColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
 }
 
-function darkenMode(){
+
+function hexToRgb(hex) {
+    hex = hex.replace("#", "");
+    
+    var red = parseInt(hex.substring(0, 2), 16);
+    var green = parseInt(hex.substring(2, 4), 16);
+    var blue = parseInt(hex.substring(4, 6), 16);
+    
+    var rgbString = "rgb(" + red + ", " + green + ", " + blue + ")";
+    
+    return rgbString;
+  }
+  
+function ligtenMode(){
     currentMode = "darken";
     var colorPicker = document.getElementById('colorPicker');
     selectedColor = colorPicker.value;
-    console.log(selectedColor)
-
-    // Parse the color value to separate the components
+    
     var red = parseInt(selectedColor.slice(1, 3), 16);
     var green = parseInt(selectedColor.slice(3, 5), 16);
     var blue = parseInt(selectedColor.slice(5), 16);
+
+    red += 1;
+    green += 1;
+    blue += 1;
     
-    // Add 10 to each component
-    red += 10;
-    green += 10;
-    blue += 10;
-    
-    // Ensure the values are within the valid range (0 to 255)
     red = Math.min(Math.max(red, 0), 255);
     green = Math.min(Math.max(green, 0), 255);
     blue = Math.min(Math.max(blue, 0), 255);
     
-    // Convert the updated components back to hexadecimal and format the color value
-    console.log("#" + red.toString(16).padStart(2, '0') + green.toString(16).padStart(2, '0') + blue.toString(16).padStart(2, '0'));
+    colorPicker.value = "#" + red.toString(16).padStart(2, '0') + green.toString(16).padStart(2, '0') + blue.toString(16).padStart(2, '0');
+    selectedColor = hexToRgb(colorPicker.value);
+    
 }
 
 
