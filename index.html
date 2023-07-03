@@ -10,8 +10,14 @@
 <body>
     
     <div class="container">
-        <button onclick="gridSelect()">Select No. of Grids</button>
 
+    </div>
+    <div class="controls">
+        <input type="color" id="colorPicker" onchange="colorPick()">
+
+        <button class="btn btn-dark" onclick="gridSelect()">Select No. of Grids</button>
+        <button class="btn btn-dark" onclick="rainbowMode()">Rainbow Mode</button>
+        <button class="btn btn-dark" onclick="darkenMode()">Darken Mode</button>
     </div>
     <script src="script.js"></script>
 </body>
